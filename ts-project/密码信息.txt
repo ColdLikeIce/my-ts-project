@@ -1,0 +1,29 @@
+安装typescript+vue项目命令  vue init SimonZhangITer/vue-typescript-template my-project
+SAAS服务器    
+120.78.185.180(公网) 172.18.91.223(内网) H3password    administrator 
+Paas远程密码
+paas H3yun!@#$%    118.31.12.73
+
+开发服务器远程密码 120.79.50.242 H3password
+
+https://saas.h3yun.com/login?mobile=18826222483&EngineCode=ame2p6am2khkd5jh&ClusterTokenId=1
+
+https://zeta.h3yun.com/login?mobile=13533687469&enginecode=h3qe02nigsroejwdgggfutzi4&ClusterTokenId=1
+
+https://zeta.h3yun.com/login?mobile=18826222483&enginecode=h3qe02nigsroejwdgggfutzi4&ClusterTokenId=1
+
+
+https://online.h3yun.com/login?dingid=$:LWCP_v1:$nSoOh0eE61AKQ5Ik40p0mA==
+&enginecode=x15m4svn1y8attz3s99vumgu6&ClusterTokenId=1
+
+https://www.h3yun.com/login?mobile=13715240757&clustertokenid=xuoewUUJqwiiqwkkkdWEIlong&EngineCode=an6t10i9ni7459vo
+
+https://www.h3yun.com/login?mobile=15919856449&clustertokenid=xuoewUUJqwiiqwkkkdWEIlong&EngineCode=plh66ozkpm5r4g046js5781z0
+
+
+https://master.h3yun.com/login?mobile=18826222483&enginecode=hkvahvi2mau4d93l&ClusterTokenId=1
+
+胖友们  跑newPC的有福音了 ！！！
+我把webpack配置里面的加载文件路径列举了下来，大家可以选择自己跑的页面加载，不必全部加载费时费力还老内存溢出。
+
+

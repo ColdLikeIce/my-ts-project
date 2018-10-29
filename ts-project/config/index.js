@@ -10,7 +10,21 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/apis/**': {
+        // target: 'http://localhost:59012/',
+        // target: 'http://120.79.50.242:8089/',
+        // target: 'http://localhost:59013/',
+        target: 'https://zeta.h3yun.com/',
+        //target: 'http://kappa.h3yun.com:9001/',
+        // target: 'http://localhost:59012/',
+        //target: 'http://localhost:8099/',
+        // target:"http://localhost:8080/",
+        changeOrigin: true,
+        secure: false,
+        pathRewrite: { '^/apis': '' }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

@@ -20,6 +20,21 @@ const actions: ActionTree<any, any> = {
       })
     })
   },
+  getLeftMenusInfo({ state, commit }, NodeCode: any) {    
+    const paramData = {
+      PostData: JSON.stringify({
+        ActionName: 'GetLeftMenusInfo',
+        NodeCode: NodeCode
+      })
+    }
+    return new Promise((resolve, reject) => {
+      fetch('/Navigation/OnAction', paramData, 'post').then((data: any) => {
+        resolve(data)
+      }).catch(error => {
+        resolve(error)
+      })
+    })
+  },
 }
 
 export default actions

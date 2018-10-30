@@ -5,7 +5,7 @@ const actions: ActionTree<any, any> = {
   // setLogin({ state, commit }, flag: boolean): void {
   //   commit(TYPES.SET_LOGIN_STATUS, flag)
   // }
-  getHeaderMenusInfo({ state, commit }, NodeCode: any) {    
+  getHeaderMenusInfo({ state, commit }, NodeCode: any) {
     const paramData = {
       PostData: JSON.stringify({
         ActionName: 'GetHeaderMenusInfo',
@@ -20,7 +20,24 @@ const actions: ActionTree<any, any> = {
       })
     })
   },
-  getLeftMenusInfo({ state, commit }, NodeCode: any) {    
+  /**
+ * 登录
+ */
+  login({ state, commit }, param: any) {
+    const paramData = {
+      mobile: param.mobile,
+      engineCode: param.engineCode,
+      clusterTokenId: param.clusterTokenId
+    }
+    return new Promise((resolve, reject) => {
+      fetch('/login/LoginByMobile', paramData, 'post').then((data: any) => {
+        resolve(data)
+      }).catch(error => {
+        resolve(error)
+      })
+    })
+  },
+  getLeftMenusInfo({ state, commit }, NodeCode: any) {
     const paramData = {
       PostData: JSON.stringify({
         ActionName: 'GetLeftMenusInfo',

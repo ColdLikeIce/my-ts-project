@@ -17,9 +17,25 @@
       <div class="pull-right">
         <ul>
           <li v-for="(item,index) in appMode" :key="index" :class="[CurentModule==item.appCode||(item.appCode=='MyTask'&&CurentModule=='')? 'active':'']" @click="changeApp(item.appCode)">{{item.displayName}}</li>
-          <li v-if="currentHasShow">更多应用</li>
+          <li v-if="CurrentHasShow">更多应用</li>
           <li class="active" v-else>{{currentApp.DisplayName}}</li>
+          <li class="moreApp">#</li>
+          <li class="divider-vertical"></li>
+          <li>模板中心</li>
+          <li class="divider-vertical"></li>
+          <li>应用工厂</li>
+          <li class="divider-vertical"></li>
+          <li>？</li>
+          <li class="divider-vertical"></li>
+          <li>$</li>
+          <li class="divider-vertical"></li>
+          <li>
+            <div class="user-avatar">
+              <img :src="ProfilePhotoUrl" class="userimg">
+            </div>
+          </li>
         </ul>
+        <!-- <publicIcon></publicIcon> -->
       </div>
     </div>
     <div class="app-list">
@@ -28,12 +44,16 @@
   </div>
 </template>
 <script lang="ts">
-import Vue from 'vue'
-import Component from 'vue-class-component'
+import Icon from './publicIcon.vue'
+import { Component, Vue } from 'vue-property-decorator'
+
 // import { GetEngineCode, GetHeaderMenusInfo } from '../service/getData';
 
 @Component({
-  name: 'my-header'
+  name: 'my-header',
+  components: {
+    'publicIcon': Icon
+  }
 })
 export default class Header extends Vue {
   currentApp: any = {
@@ -62,7 +82,8 @@ export default class Header extends Vue {
   CurentModule:string = '';
   NodeCode: string = 'D000131detretrt';
   ShowInstallMoreApp:boolean = false;
-  currentHasShow = false;
+  CurrentHasShow = false;
+  ProfilePhotoUrl: string = '';
   async getLeftMenusInfo () {
     const that = this
     this.$store.dispatch('getLeftMenusInfo', this.NodeCode)
@@ -81,9 +102,10 @@ export default class Header extends Vue {
         that.MoreApps = data.ReturnData.MoreApps
         that.ShowInstallMoreApp = data.ReturnData.ShowInstallMoreApp
         that.CurentModule = data.ReturnData.CurentModule
-        for (let i = 0; i < this.appMode.length - 1; i += 1) {
+        that.ProfilePhotoUrl = data.ReturnData.ProfilePhotoUrl
+        for (let i = 0; i < this.appMode.length; i += 1) {
           if (that.CurentModule === that.appMode[i].appCode || that.CurentModule === '') {
-            that.currentHasShow = true
+            that.CurrentHasShow = true
             break
           }
         }
@@ -147,9 +169,21 @@ export default class Header extends Vue {
           padding: 0 5px;
           font-size: 14px;    
         }
+        .divider-vertical{
+          margin-top: 19px;
+          height: 16px;
+          min-height: 16px;
+          line-height: 16px;
+          border-left: 1px solid #e3e3e3;
+          margin-left: 0!important;
+          margin-right: 0!important;  
+        }
         .active{
           color: #37abfd;
           border-bottom: 2px solid #37abfd;
+        }
+        .moreApp{
+          margin-left: -8px;
         }
         li:hover{cursor: pointer; color: #37abfd;}
       }
@@ -165,6 +199,11 @@ export default class Header extends Vue {
     top: 59px;
     z-index: 9999;
     background: #37abfd;
+  }
+  .userimg{
+    width: 30px;
+    height: 30px;
+    margin-top: 12px;
   }
 }
 </style>

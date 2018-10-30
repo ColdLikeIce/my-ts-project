@@ -1,7 +1,7 @@
 {
   "include": [
     "src/*",
-    "src/**/*"
+    "src/**/*", "test/unit/specs/MyHeader.spec.js", "test/unit/specs/AddItem.spec.js"
   ],
   "exclude": [
     "node_modules"

@@ -31,7 +31,8 @@
           <li class="divider-vertical"></li>
           <li>
             <div class="user-avatar">
-              <img :src="ProfilePhotoUrl" class="userimg">
+              <img :src="ProfilePhotoUrl" class="userimg" v-on:mouseenter="visible"   @mouseleave="invisible">
+              <div v-show="engineShow">你好</div>
             </div>
           </li>
         </ul>
@@ -84,6 +85,7 @@ export default class Header extends Vue {
   ShowInstallMoreApp:boolean = false;
   CurrentHasShow = false;
   ProfilePhotoUrl: string = '';
+  engineShow:boolean = false;
   async getLeftMenusInfo () {
     const that = this
     this.$store.dispatch('getLeftMenusInfo', this.NodeCode)
@@ -113,8 +115,14 @@ export default class Header extends Vue {
       }
     })
   }
-  changeApp (code:string) {
+  visible () {
     debugger
+    this.engineShow = true
+  }
+  invisible () {
+    this.engineShow = false
+  }
+  changeApp (code:string) {
     this.NodeCode = code
     this.GetHeaderMenusInfo()
   }
@@ -204,6 +212,7 @@ export default class Header extends Vue {
     width: 30px;
     height: 30px;
     margin-top: 12px;
+    border-radius: 50%;
   }
 }
 </style>

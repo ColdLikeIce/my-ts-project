@@ -116,7 +116,6 @@ export default class Header extends Vue {
     })
   }
   visible () {
-    debugger
     this.engineShow = true
   }
   invisible () {
